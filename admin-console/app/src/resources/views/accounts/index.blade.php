@@ -22,11 +22,6 @@
                 <li><a href="/accounts/playeritemList" class="nav-link px-2 text-white">所持アイテム一覧</a></li>
             </ul>
             <div class="text-end">
-                <form method="post" action="{{url('account/dologout')}}">
-                    <button class="btn btn-warning btn btn-primary w-100 py-2" type="submit">ログアウト
-                    </button>
-                    <input type="hidden" name="action" value="dologout">
-                </form>
                 <form method="post" action="{{url('account/index')}}">
                     @csrf
                     <div class="search">
@@ -34,6 +29,12 @@
                                placeholder="入力してください">
                         <button id="searchBtn">検索</button>
                     </div>
+                </form>
+                <form method="post" action="{{url('accounts/dologout')}}">
+                    @csrf
+                    <button class="btn btn-warning btn btn-primary w-100 py-2" type="submit">ログアウト
+                    </button>
+                    <input type="hidden" name="action" value="dologout">
                 </form>
             </div>
         </div>

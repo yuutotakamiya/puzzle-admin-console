@@ -11,13 +11,17 @@ class PlayerItemListController extends Controller
     //所持アイテム一覧を表示する
     public function Playeritem(Request $request)
     {
-        $request->session()->put('login', true);
         if (!$request->session()->exists('login')) {
             return redirect('accounts/login');
 
         } else {
-            $Player_item = Player_item::join('Items', 'Player_item.id', '=', 'Items.id')->get();
-            return view('accounts/playeritemList', ['accounts' => $Player_item]);
+            // プレイヤーテーブルとアイテムテーブルと所持個数を結合して取得
+            $playerItems = Player_item::join('players', 'player_items.id', '=', 'players.id')
+                ->join('items', 'player_items.id', '=', 'items.id')
+                ->select('player_items.id', 'players.player_name as player_name', 'items.item_name',
+                    'player_items.Quantity_in_possession')
+                ->get();
+            return view('accounts/playeritemList', ['accounts' => $playerItems]);
         }
     }
 }

@@ -11,20 +11,6 @@ class PlayerListController extends Controller
 {
     public function PlayerList(Request $request)
     {
-
-        // バリデーションチェック
-        $validator = Validator::make($request->all(), [
-            'player_name' => ['required', 'string', 'min:4', 'max:25'],
-            'level' => ['required', 'integer', 'min:1', 'max:100'],
-            'exp' => ['required', 'integer', 'min:1', 'max:1000000'],
-            'life' => ['required', 'integer', 'min:1', 'max:100'],
-        ]);
-
-        if ($validator->fails()) {
-            return redirect('/')
-                ->withErrors($validator)
-                ->withInput();
-        }
         if (!$request->session()->exists('login')) {
             return redirect('/');
         } else {

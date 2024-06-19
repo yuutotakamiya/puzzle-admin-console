@@ -39,7 +39,7 @@
     @foreach($accounts as $Player_itemList)
         <tr>
             <td>id:{{$Player_itemList['id']}}</td>
-            <td>プレイヤー名:{{$Player_itemList['Player_name']}}</td>
+            <td>プレイヤー名:{{$Player_itemList['player_name']}}</td>
             <td>アイテム名:{{$Player_itemList['item_name']}}</td>
             <td>所持個数:{{$Player_itemList['Quantity_in_possession']}}</td>
         </tr>

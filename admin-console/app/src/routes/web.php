@@ -28,10 +28,10 @@ Route::get('account/index', [AccountController::class, 'seach'])->name('account/
 Route::get('accounts/playerList', [PlayerListController::class, 'PlayerList']);
 
 //アイテム一覧を表示する
-Route::get('accounts/itemList', [ItemListController::class, 'ItemList'])->name('item.list');
+Route::get('accounts/itemList', [ItemListController::class, 'ItemList']);
 
 //所持アイテム一覧を表示する
-Route::get('accounts/playeritemList', [PlayerItemListController::class, 'Playeritem']);
+Route::get('accounts/playeritemList', [PlayerItemListController::class, 'Playeritem'])->name('player.item');
 
 //ログアウトする
 Route::post('accounts/dologout', [LoginController::class, 'dologout']);
