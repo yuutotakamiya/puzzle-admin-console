@@ -17,11 +17,12 @@
             </a>
 
             <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                <li><a href="/accounts/index" class="nav-link px-2 text-white">ユーザー一覧</a></li>
-                <li><a href="/accounts/playerList" class="nav-link px-2 text-white">プレイヤー一覧</a></li>
-                <li><a href="/accounts/itemList" class="nav-link px-2 text-white">アイテム一覧</a></li>
-                <li><a href="/accounts/playeritemList"
-                       class="nav-link px-2 text-secondary">所持アイテム一覧</a></li>
+                <li><a href="{{route('accountscreate')}}"
+                       class="nav-link px-2 text-secondary">アカウント登録</a></li>
+                <li><a href="{{route('accountsindex')}}" class="nav-link px-2 text-secondary">ユーザー一覧</a></li>
+                <li><a href="{{route('accounts.userList')}}" class="nav-link px-2 text-white">プレイヤー一覧</a></li>
+                <li><a href="{{route('accounts.itemList')}}" class="nav-link px-2 text-white">アイテム一覧</a></li>
+                <li><a href="{{route('accounts.useritemList')}}" class="nav-link px-2 text-white">所持アイテム一覧</a>
             </ul>
             <div class="text-end">
                 <form method="post" action="{{url('accounts/dologout')}}">
@@ -38,10 +39,16 @@
 <table class="table table-bordered">
     @foreach($accounts as $Player_itemList)
         <tr>
-            <td>id:{{$Player_itemList['id']}}</td>
-            <td>プレイヤー名:{{$Player_itemList['player_name']}}</td>
-            <td>アイテム名:{{$Player_itemList['item_name']}}</td>
-            <td>所持個数:{{$Player_itemList['Quantity_in_possession']}}</td>
+            <th>id</th>
+            <th>プレイヤーの名前</th>
+            <th>アイテムの名前</th>
+            <th>所持個数</th>
+        </tr>
+        <tr>
+            <td>{{$Player_itemList['id']}}</td>
+            <td>{{$Player_itemList['user_name']}}</td>
+            <td>{{$Player_itemList['item_name']}}</td>
+            <td>{{$Player_itemList['Quantity_in_possession']}}</td>
         </tr>
     @endforeach
 </table>

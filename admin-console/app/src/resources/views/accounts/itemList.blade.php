@@ -17,11 +17,12 @@
             </a>
 
             <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                <li><a href="/accounts/index" class="nav-link px-2 text-white">ユーザー一覧</a></li>
-                <li><a href="/accounts/playerList" class="nav-link px-2 text-white">プレイヤー一覧</a></li>
-                <li><a href="/accounts/itemList" class="nav-link px-2 text-secondary">アイテム一覧</a></li>
-                <li><a href="/accounts/playeritemList"
-                       class="nav-link px-2 text-white">所持アイテム一覧</a></li>
+                <li><a href="{{route('accountscreate')}}"
+                       class="nav-link px-2 text-secondary">アカウント登録</a></li>
+                <li><a href="{{route('accountsindex')}}" class="nav-link px-2 text-secondary">ユーザー一覧</a></li>
+                <li><a href="{{route('accounts.userList')}}" class="nav-link px-2 text-white">プレイヤー一覧</a></li>
+                <li><a href="{{route('accounts.itemList')}}" class="nav-link px-2 text-white">アイテム一覧</a></li>
+                <li><a href="{{route('accounts.useritemList')}}" class="nav-link px-2 text-white">所持アイテム一覧</a>
             </ul>
             <div class="text-end">
                 <form method="post" action="{{url('accounts/dologout')}}">
@@ -38,11 +39,18 @@
 <table class="table table-bordered">
     @foreach($accounts as $itemList)
         <tr>
-            <td>id:{{$itemList['id']}}</td>
-            <td>名前:{{$itemList['item_name']}}</td>
-            <td>種別:{{$itemList['type']}}</td>
-            <td>効果値:{{$itemList['effect_size']}}</td>
-            <td>説明:{{$itemList['Description']}}</td>
+            <th>id</th>
+            <th>名前</th>
+            <th>種別</th>
+            <th>効果値</th>
+            <th>説明</th>
+        </tr>
+        <tr>
+            <td>{{$itemList['id']}}</td>
+            <td>{{$itemList['item_name']}}</td>
+            <td>{{$itemList['type']}}</td>
+            <td>{{$itemList['effect_size']}}</td>
+            <td>{{$itemList['Description']}}</td>
         </tr>
     @endforeach
 </table>

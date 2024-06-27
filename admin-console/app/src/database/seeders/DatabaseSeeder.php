@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Http\Controllers\PlayerListController;
+use App\Http\Controllers\UserListController;
 use App\Models\Account;
 use App\Models\Player;
 use App\Models\User;
@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(AccountsTableSeeder::class);
         $this->call(ItemsTableSeeder::class);
-        $this->call(PlayersTableSeeder::class);
-        $this->call(Player_itemsTableSeeder::class);
+        $this->call(UsersTableSeeder::class);
+        $this->call(User_itemsTableSeeder::class);
     }
 }

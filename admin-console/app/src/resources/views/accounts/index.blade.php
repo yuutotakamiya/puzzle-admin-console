@@ -16,18 +16,21 @@
                 </svg>
             </a>
             <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                <li><a href="/accounts/index" class="nav-link px-2 text-secondary">ユーザー一覧</a></li>
-                <li><a href="/accounts/playerList" class="nav-link px-2 text-white">プレイヤー一覧</a></li>
-                <li><a href="/accounts/itemList" class="nav-link px-2 text-white">アイテム一覧</a></li>
-                <li><a href="/accounts/playeritemList" class="nav-link px-2 text-white">所持アイテム一覧</a></li>
+                <li><a href="{{route('accountscreate')}}"
+                       class="nav-link px-2 text-secondary">アカウント登録</a></li>
+                <li><a href="{{route('accountsindex')}}" class="nav-link px-2 text-secondary">ユーザー一覧</a></li>
+                <li><a href="{{route('accounts.userList')}}" class="nav-link px-2 text-white">プレイヤー一覧</a></li>
+                <li><a href="{{route('accounts.itemList')}}" class="nav-link px-2 text-white">アイテム一覧</a></li>
+                <li><a href="{{route('accounts.useritemList')}}" class="nav-link px-2 text-white">所持アイテム一覧</a>
             </ul>
             <div class="text-end">
-                <form method="post" action="{{url('account/index')}}">
+                <form method="post" action="{{route('accountsindex')}}">
                     @csrf
                     <div class="search">
-                        <input type="search" id="search-text" name="search" class="searchform"
-                               placeholder="入力してください">
+                        <input type="search" id="search-text" name="name" class="searchform"
+                               placeholder="名前を入力">
                         <button id="searchBtn">検索</button>
+                        <input type="hidden" name="action" value="search">
                     </div>
                 </form>
                 <form method="post" action="{{url('accounts/dologout')}}">
@@ -44,8 +47,36 @@
 <table class="table table-bordered">
     @foreach($accounts as $account)
         <tr>
-            <td>名前:{{$account['name']}}</td>
-            <td>パス:{{$account['password']}}</td>
+            <th>id</th>
+            <th>名前</th>
+            <th>パスワード</th>
+            <th>操作</th>
+        </tr>
+        <tr>
+            <td>{{$account['id']}}</td>
+            <td>{{$account['name']}}</td>
+            <td>{{$account['password']}}</td>
+            <form method="post" action="{{route('accountsaccount_destroy')}}">
+                @csrf
+                <th>
+                    <button type="submit" onclick="location.href='{{route('accountsaccount_destroy')}}'"
+                            name="destroybutton">削除
+                    </button>
+                    <input type="hidden" name="action" value="destroy">
+                    <input type="hidden" name="id" value={{$account['id']}}>
+                </th>
+            </form>
+            <form method="post" action="{{route('accountspassword_update')}}">
+                @csrf
+                <th>
+                    <button type="submit" onclick="location.href='{{route('accountspassword_update')}}'"
+                            name="destroybutton">更新
+                    </button>
+                    <input type="hidden" name="action" value="update">
+                    <input type="hidden" name="id"
+                           value={{$account['id']}} {{$account['name']}} {{$account['password']}}>
+                </th>
+            </form>
         </tr>
     @endforeach
 </table>

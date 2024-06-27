@@ -17,11 +17,12 @@
             </a>
 
             <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                <li><a href="/accounts/index" class="nav-link px-2 text-white">ユーザー一覧</a></li>
-                <li><a href="/accounts/playerList" class="nav-link px-2 text-secondary">プレイヤー一覧</a></li>
-                <li><a href="/accounts/itemList" class="nav-link px-2 text-white">アイテム一覧</a></li>
-                <li><a href="/accounts/playeritemList"
-                       class="nav-link px-2 text-white">所持アイテム一覧</a></li>
+                <li><a href="{{route('accountscreate')}}"
+                       class="nav-link px-2 text-secondary">アカウント登録</a></li>
+                <li><a href="{{route('accountsindex')}}" class="nav-link px-2 text-secondary">ユーザー一覧</a></li>
+                <li><a href="{{route('accounts.userList')}}" class="nav-link px-2 text-white">プレイヤー一覧</a></li>
+                <li><a href="{{route('accounts.itemList')}}" class="nav-link px-2 text-white">アイテム一覧</a></li>
+                <li><a href="{{route('accounts.useritemList')}}" class="nav-link px-2 text-white">所持アイテム一覧</a>
             </ul>
             <div class="text-end">
                 <form method="post" action="{{url('accounts/dologout')}}">
@@ -38,11 +39,18 @@
 <table class="table table-bordered">
     @foreach($accounts as $player)
         <tr>
-            <td>id:{{$player['id']}}</td>
-            <td>名前:{{$player['player_name']}}</td>
-            <td>レベル:{{$player['level']}}</td>
-            <td>経験値:{{$player['exp']}}</td>
-            <td>ライフ{{$player['life']}}</td>
+            <th>id</th>
+            <th>名前</th>
+            <th>レベル</th>
+            <th>経験値</th>
+            <th>ライフ</th>
+        </tr>
+        <tr>
+            <td>{{$player['id']}}</td>
+            <td>{{$player['user_name']}}</td>
+            <td>{{$player['level']}}</td>
+            <td>{{$player['exp']}}</td>
+            <td>{{$player['life']}}</td>
         </tr>
     @endforeach
 </table>

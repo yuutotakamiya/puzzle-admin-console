@@ -10,10 +10,15 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('player_items', function (Blueprint $table) {
+        Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->integer('Quantity_in_possession');
+            $table->string('user_name');
+            $table->integer('level');
+            $table->integer('exp');
+            $table->integer('life');
             $table->timestamps();
+
+            $table->unique('user_name');
         });
     }
 
@@ -22,6 +27,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('player_items');
+        Schema::dropIfExists('users');
     }
 };

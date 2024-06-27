@@ -5,20 +5,18 @@ namespace App\Http\Controllers;
 use App\Models\Account;
 use Barryvdh\Debugbar\Facades\Debugbar;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class AccountController extends Controller
 {
     //アカウント一覧を表示する
     public function index(Request $request)
     {
-        if (!$request->session()->exists('login')) {
-            return redirect('/');
-        } else {
-            //テーブルの全てのレコードを取得
-            $accounts = Account::all();
+        //テーブルの全てのレコードを取得
+        $accounts = Account::all();
 
-            return view('accounts/index', ['accounts' => $accounts]);
-        }
+        return view('accounts/index', ['accounts' => $accounts]);
+
         //return view('accounts/index',['title'=>$title]);
 
         //セッションに指定のキーで値を保存
@@ -44,13 +42,91 @@ class AccountController extends Controller
         //Debugbar::error('エラー');
     }
 
-    public function seach(Request $request)
+    // アカウント検索
+    public function search(Request $request)
     {
         if ($request->name) {
-            $account = Account::where('name' . '=' . 'takamiya')->get();
-            return view('account/index', ['account' => $account]);
+            $accounts = Account::where('name', '=', $request['name'])->get();
+            return view('accounts.index', ['accounts' => $accounts]);
         } else {
-            return redirect('account/index');
+            return redirect()->route('accounts.index');
         }
+    }
+
+    //アカウント登録画面用
+    public function create(Request $request)
+    {
+        return view('accounts.AccountRegistration');
+    }
+
+    //アカウント登録処理
+    public function store(Request $request)
+    {
+        //バリデーションチェック
+        $validated = $request->validate([
+            'name' => ['required', 'min:4', 'max:25'],
+            'password' => ['required']
+        ]);
+
+        //レコードの追加
+        Account::create(['name' => $request['name'], 'password' => Hash::make($request['password'])]);
+
+        //acconuts.indexにリダイレクト
+        return redirect()->route('accountscompletion', ['name' => $request['name']]);
+    }
+
+    //アカウント登録完了のページにviewを送る
+    public function completion(Request $request)
+    {
+        return view('accounts.AccountRegistrationcompletion', ['name' => $request['name']]);
+    }
+
+    //アカウント削除確認画面
+    public function account_destroy(Request $request)
+    {
+        $accounts = Account::where('id', '=', $request['id'])->get();
+        return view('accounts.accountdestroy', ['name' => $accounts[0]['name'], 'id' => $accounts[0]['id']]);
+    }
+
+    //アカウントを削除処理
+    public function destroy(Request $request)
+    {
+        $account = Account::findOrFail($request['id']);
+        $account->delete();
+
+        return redirect()->route('accountsdestroy_complete', ['name' => $account['name']]);
+    }
+
+    //アカウント削除完了の関数
+    public function destroy_complete(Request $request)
+    {
+        return view('accounts/destroycomplete', ['name' => $request['name']]);
+    }
+
+    //パスワード更新画面
+    public function password_update(Request $request)
+    {
+        $accounts = Account::where('id', '=', $request['id'])->get();
+        return view('accounts.update',
+            ['name' => $accounts[0]['name'], 'id' => $accounts[0]['id'], 'password' => $accounts[0]['password']]);
+    }
+
+    //パスワード更新処理
+    public function update(Request $request)
+    {
+        $account = Account::findOrFail($request['id']);
+        $account->password = Hash::make($request['password']);
+        $account->save();
+
+        $request->validate([
+            'password' => ['required', 'confirmed']
+        ]);
+        return redirect()->route('accountsupdate_complete', ['name' => $account['name']]);
+    }
+
+    //パスワード更新完了の関数
+    public function update_complete(Request $request)
+    {
+        return view('accounts/updatecomplete', ['name' => $request['name']]);
     }
 }

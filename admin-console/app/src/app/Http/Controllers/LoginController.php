@@ -29,7 +29,7 @@ class LoginController extends Controller
         if ($account->count() == 0) {
             return redirect()->route('login', ['error' => 'invalid']);
         } elseif (Hash::check($request['password'], $account[0]['password'])) {
-            return redirect('accounts/gameManagement');
+            return redirect()->route('accounts.gameManagement');
         } else {
             return redirect()->route('login', ['error' => 'invalid']);
         }
