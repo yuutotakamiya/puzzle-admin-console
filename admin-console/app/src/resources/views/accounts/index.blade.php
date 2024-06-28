@@ -43,7 +43,6 @@
         </div>
     </div>
 </header>
-<h1>ユーザー一覧</h1>
 <table class="table table-bordered">
     @foreach($accounts as $account)
         <tr>

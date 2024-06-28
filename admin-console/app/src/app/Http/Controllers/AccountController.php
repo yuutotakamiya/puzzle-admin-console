@@ -116,11 +116,11 @@ class AccountController extends Controller
     {
         $account = Account::findOrFail($request['id']);
         $account->password = Hash::make($request['password']);
-        $account->save();
-
+        //パスワード一致のバリデーション
         $request->validate([
             'password' => ['required', 'confirmed']
         ]);
+        $account->save();
         return redirect()->route('accountsupdate_complete', ['name' => $account['name']]);
     }
 
