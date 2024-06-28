@@ -114,12 +114,12 @@ class AccountController extends Controller
     //パスワード更新処理
     public function update(Request $request)
     {
-        $account = Account::findOrFail($request['id']);
-        $account->password = Hash::make($request['password']);
         //パスワード一致のバリデーション
         $request->validate([
             'password' => ['required', 'confirmed']
         ]);
+        $account = Account::findOrFail($request['id']);
+        $account->password = Hash::make($request['password']);
         $account->save();
         return redirect()->route('accountsupdate_complete', ['name' => $account['name']]);
     }

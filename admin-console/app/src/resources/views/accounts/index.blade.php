@@ -46,10 +46,10 @@
 <table class="table table-bordered">
     @foreach($accounts as $account)
         <tr>
-            <th>id</th>
-            <th>名前</th>
-            <th>パスワード</th>
-            <th>操作</th>
+            <td>id</td>
+            <td>名前</td>
+            <td>パスワード</td>
+            <td>操作</td>
         </tr>
         <tr>
             <td>{{$account['id']}}</td>
@@ -57,24 +57,24 @@
             <td>{{$account['password']}}</td>
             <form method="post" action="{{route('accountsaccount_destroy')}}">
                 @csrf
-                <th>
+                <td>
                     <button type="submit" onclick="location.href='{{route('accountsaccount_destroy')}}'"
                             name="destroybutton">削除
                     </button>
                     <input type="hidden" name="action" value="destroy">
                     <input type="hidden" name="id" value={{$account['id']}}>
-                </th>
+                </td>
             </form>
             <form method="post" action="{{route('accountspassword_update')}}">
                 @csrf
-                <th>
+                <td>
                     <button type="submit" onclick="location.href='{{route('accountspassword_update')}}'"
                             name="destroybutton">更新
                     </button>
                     <input type="hidden" name="action" value="update">
                     <input type="hidden" name="id"
                            value={{$account['id']}} {{$account['name']}} {{$account['password']}}>
-                </th>
+                </td>
             </form>
         </tr>
     @endforeach
