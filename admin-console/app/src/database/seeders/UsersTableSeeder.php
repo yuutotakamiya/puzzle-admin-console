@@ -19,7 +19,7 @@ class UsersTableSeeder extends Seeder
         User::factory(100)->create();
         //
         User::create([
-            'user_name' => '勇者',
+            'name' => '勇者',
             'level' => 20,
             'exp' => 30,
             'life' => 100,

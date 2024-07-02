@@ -17,7 +17,7 @@ class ItemsTableSeeder extends Seeder
     {
         //
         Item::create([
-            'item_name' => '回復薬',
+            'name' => '回復薬',
             'type' => '消耗品',
             'effect_size' => 1,
             'Description' => '少し回復することができる'

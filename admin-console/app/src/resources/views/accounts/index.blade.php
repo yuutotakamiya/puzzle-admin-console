@@ -1,6 +1,6 @@
 @extends('layouts.app')
-@section('title','ユーザー一覧')
-@section('h1','ユーザー一覧')
+@section('title','アカウント一覧')
+@section('h1','アカウント一覧')
 
 @section('body')
     {{$accounts->links('vendor.pagination.bootstrap-5')}}

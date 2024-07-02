@@ -14,7 +14,7 @@
             </tr>
             <tr>
                 <td>{{$itemList['id']}}</td>
-                <td>{{$itemList['item_name']}}</td>
+                <td>{{$itemList['name']}}</td>
                 <td>{{$itemList['type']}}</td>
                 <td>{{$itemList['effect_size']}}</td>
                 <td>{{$itemList['Description']}}</td>

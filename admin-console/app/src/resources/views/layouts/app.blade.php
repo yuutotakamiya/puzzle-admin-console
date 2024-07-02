@@ -16,13 +16,17 @@
             <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
                 <li><a href="{{route('accountscreate')}}"
                        class="nav-link px-2 text-secondary">アカウント登録</a></li>
-                <li><a href="{{route('accountsindex')}}" class="nav-link px-2 text-secondary">ユーザー一覧</a></li>
-                <li><a href="{{route('accounts.userList')}}" class="nav-link px-2 text-white">プレイヤー一覧</a></li>
+                <li><a href="{{route('accountsindex')}}" class="nav-link px-2 text-secondary">アカウント一覧</a></li>
+                <li><a href="{{route('accounts.userList')}}" class="nav-link px-2 text-white">ユーザー一覧</a></li>
                 <li><a href="{{route('accounts.itemList')}}" class="nav-link px-2 text-white">アイテム一覧</a></li>
-                <li><a href="{{route('accounts.useritemList')}}" class="nav-link px-2 text-white">所持アイテム一覧</a>
+                <li><a href="{{route('accounts.useritemList')}}"
+                       class="nav-link px-2 text-white">ユーザー所持アイテム一覧</a>
                 <li><a href="{{route('mailsmail_index')}}" class="nav-link px-2 text-white">メールマスタ一覧</a>
                 <li><a href="{{route('mailsuser_mail_list')}}"
                        class="nav-link px-2 text-white">ユーザーメール受信一覧</a>
+                <li><a href="{{route('mailsmail_send')}}"
+                       class="nav-link px-2 text-white">メールの送信</a>
+
             </ul>
             <div class="text-end">
                 <form method="post" action="{{route('accountsindex')}}">

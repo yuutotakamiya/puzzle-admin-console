@@ -16,6 +16,8 @@ class User_itemsTableSeeder extends Seeder
     {
         //
         User_item::create([
+            'user_id' => 1,
+            'item_id' => 1,
             'Quantity_in_possession' => 20
         ]);
     }

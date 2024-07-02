@@ -12,8 +12,12 @@ return new class extends Migration {
     {
         Schema::create('user_items', function (Blueprint $table) {
             $table->id();
+            $table->integer('user_id');
+            $table->integer('item_id');
             $table->integer('Quantity_in_possession');
             $table->timestamps();
+
+            $table->unique(['user_id', 'item_id']);
         });
     }
 

@@ -51,6 +51,7 @@ Route::middleware(NoCacheMiddleware::class)->group(function () {
     Route::prefix('mails')->name('mails')->controller(mailController::class)->group(function () {
         Route::get('mailmaster', 'mail_index')->name('mail_index');//メールマスタ一覧
         Route::get('user_mailList', 'user_mailList')->name('user_mail_list');//メール受信一覧を表示
+        Route::post('send', 'send')->name('mail_send');//メール送信処理
     });
 
 

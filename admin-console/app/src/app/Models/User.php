@@ -12,4 +12,10 @@ class User extends Model
     protected $guarded = [
         'id',
     ];
+
+    public function items()
+    {
+        return $this->belongsToMany(Item::class, 'user_items', 'user_id',
+            'item_id')->withPivot('Quantity_in_possession');
+    }
 }

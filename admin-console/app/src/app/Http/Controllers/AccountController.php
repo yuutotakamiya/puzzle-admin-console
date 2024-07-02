@@ -48,7 +48,7 @@ class AccountController extends Controller
     {
         if ($request->name) {
             $accounts = Account::where('name', '=', $request['name'])->get();
-            return view('accounts.index', ['accounts' => $accounts]);
+            return view('layouts.app', ['accounts' => $accounts]);
         } else {
             return redirect()->route('accounts.index');
         }

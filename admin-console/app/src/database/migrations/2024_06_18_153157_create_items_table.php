@@ -12,14 +12,14 @@ return new class extends Migration {
     {
         Schema::create('items', function (Blueprint $table) {
             $table->id();
-            $table->string('item_name');
+            $table->string('name');
             $table->string('type');
             $table->integer('effect_size');
             $table->string('Description');
             $table->timestamps();
 
-            $table->unique('item_name');//ユニーク制約
-            $table->index('item_name');//indexの設定
+            $table->unique('name');//ユニーク制約
+            $table->index('name');//indexの設定
         });
     }
 
