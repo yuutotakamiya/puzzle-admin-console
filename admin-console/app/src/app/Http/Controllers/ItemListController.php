@@ -12,8 +12,8 @@ class ItemListController extends Controller
     public function ItemList(Request $request)
     {
         //アイテムリストのデータを全て取得
-        $items = Item::all();
-        
+        //$items = Item::all();
+        $items = Item::Paginate(5);
         return view('accounts.itemList', ['accounts' => $items]);
 
     }

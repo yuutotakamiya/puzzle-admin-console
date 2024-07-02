@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 use App\Http\Controllers\UserListController;
 use App\Models\Account;
-use App\Models\Player;
 use App\Models\User;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -21,5 +20,6 @@ class DatabaseSeeder extends Seeder
         $this->call(ItemsTableSeeder::class);
         $this->call(UsersTableSeeder::class);
         $this->call(User_itemsTableSeeder::class);
+        $this->call(MailsTableSeeder::class);
     }
 }

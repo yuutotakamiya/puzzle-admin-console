@@ -15,8 +15,8 @@ return new class extends Migration {
             $table->string('name', 20);//nameカラム
             $table->string('password');//passwordカラム
             $table->timestamps();//created_at,updated_at
-            
-            //$table->index('name');//indexの設定
+
+            $table->index('name');//indexの設定
             $table->unique('name');//ユニーク制約
         });
     }

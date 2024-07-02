@@ -18,7 +18,8 @@ return new class extends Migration {
             $table->integer('life');
             $table->timestamps();
 
-            $table->unique('user_name');
+            $table->unique('user_name');//ユニーク制約
+            $table->index('user_name');//indexの設定
         });
     }
 

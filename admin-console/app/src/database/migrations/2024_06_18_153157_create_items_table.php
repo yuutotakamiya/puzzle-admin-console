@@ -18,7 +18,8 @@ return new class extends Migration {
             $table->string('Description');
             $table->timestamps();
 
-            $table->unique('item_name');
+            $table->unique('item_name');//ユニーク制約
+            $table->index('item_name');//indexの設定
         });
     }
 

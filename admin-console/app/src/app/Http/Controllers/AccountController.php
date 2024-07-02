@@ -13,7 +13,8 @@ class AccountController extends Controller
     public function index(Request $request)
     {
         //テーブルの全てのレコードを取得
-        $accounts = Account::all();
+        //$accounts = Account::all();
+        $accounts = Account::Paginate(5);
 
         return view('accounts/index', ['accounts' => $accounts]);
 
@@ -65,7 +66,7 @@ class AccountController extends Controller
         //バリデーションチェック
         $validated = $request->validate([
             'name' => ['required', 'min:4', 'max:25'],
-            'password' => ['required']
+            'password' => ['required', 'confirmed']
         ]);
 
         //レコードの追加

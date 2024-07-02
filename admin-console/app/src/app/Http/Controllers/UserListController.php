@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Player;
 use App\Models\User;
 use Barryvdh\Debugbar\Facades\Debugbar;
 use Illuminate\Http\Request;
@@ -12,7 +11,8 @@ class UserListController extends Controller
 {
     public function UserList(Request $request)
     {
-        $Players = User::all();
+        //$Players = User::all();
+        $Players = User::Paginate(10);
         return view('accounts.userList', ['accounts' => $Players]);
     }
 }
