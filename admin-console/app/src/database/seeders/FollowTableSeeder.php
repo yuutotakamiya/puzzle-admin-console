@@ -2,11 +2,11 @@
 
 namespace Database\Seeders;
 
-use App\Models\Mail;
+use App\Models\Follow;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class MailsTableSeeder extends Seeder
+class FollowTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,11 +14,9 @@ class MailsTableSeeder extends Seeder
     public function run(): void
     {
         //
-        Mail::create([
-            'item_id' => 1,
-            'text_message' => 'お詫び品を送りいたします'
+        Follow::create([
+            'user_id' => 1,
+            'Follow_condition' => 0
         ]);
-
     }
-
 }

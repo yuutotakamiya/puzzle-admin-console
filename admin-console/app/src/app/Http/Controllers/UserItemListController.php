@@ -22,9 +22,9 @@ class UserItemListController extends Controller
 
         $user = User::find($request->id);
         if (!empty($user)) {
-            $items = $user->items()->paginate(3);
+            $items = $user->items()->paginate(10);
             $items->appends(['id' => $request->id]);
         }
-        return view('accounts.useritemList', ['user' => $user, 'items' => $items ?? null]);
+        return view('uers.useritemList', ['user' => $user, 'items' => $items ?? null]);
     }
 }

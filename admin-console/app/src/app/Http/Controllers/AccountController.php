@@ -15,7 +15,7 @@ class AccountController extends Controller
         //テーブルの全てのレコードを取得
         //$accounts = Account::all();
         $accounts = Account::Paginate(5);
-
+        
         return view('accounts/index', ['accounts' => $accounts]);
 
         //return view('accounts/index',['title'=>$title]);

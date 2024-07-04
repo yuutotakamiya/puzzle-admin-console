@@ -22,5 +22,11 @@ class ItemsTableSeeder extends Seeder
             'effect_size' => 1,
             'Description' => '少し回復することができる'
         ]);
+        Item::create([
+            'name' => '仙豆',
+            'type' => '消耗品',
+            'effect_size' => 3,
+            'Description' => '体力を全回復する'
+        ]);
     }
 }

@@ -1,8 +1,8 @@
 @extends('layouts.app')
-@section('title','ユーザー受信メール一覧')
-@section('h1','ユーザー受信メール一覧')
+@section('title','ユーザー所持アイテム一覧')
+@section('h1','ユーザー所持アイテム一覧')
 @section('body')
-    <form method="get" action="{{route('mailsuser_mail_list')}}">
+    <form method="get" action="{{route('accounts.useritemList')}}">
         @csrf
         <div class="search">
             <input type="search" id="search-text" name="id" class="searchform"
@@ -11,20 +11,22 @@
             <input type="hidden" name="action" value="{{$items}}">
         </div>
     </form>
-    @if($items !==null)
+    @if(!empty($items))
         {{$items->links('vendor.pagination.bootstrap-5')}}
         <table class="table table-bordered">
+            <tr>
+                <th>id</th>
+                <th>プレイヤーの名前</th>
+                <th>アイテムの名前</th>
+                <th>所持個数</th>
+            </tr>
             @foreach($user as $users)
-                @foreach($mails as $mail)
+                @foreach($items as $item)
                     <tr>
-                        <th>id</th>
-                        <th>ユーザー名</th>
-                        <th>メールのid</th>
-                    </tr>
-                    <tr>
-                        <td>{{$mail['id']}}</td>
+                        <td>{{$item['id']}}</td>
                         <td>{{$user->name}}</td>
-                        <td>{{$mail['mail_id']}}</td>
+                        <td>{{$item->name}}</td>
+                        <td>{{$item->pivot->Quantity_in_possession}}</td>
                     </tr>
                 @endforeach
             @endforeach

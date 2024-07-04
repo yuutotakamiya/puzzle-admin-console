@@ -15,8 +15,8 @@
             </a>
             <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
                 <li><a href="{{route('accountscreate')}}"
-                       class="nav-link px-2 text-secondary">アカウント登録</a></li>
-                <li><a href="{{route('accountsindex')}}" class="nav-link px-2 text-secondary">アカウント一覧</a></li>
+                       class="nav-link px-2 text-white ">アカウント登録</a></li>
+                <li><a href="{{route('accountsindex')}}" class="nav-link px-2 text-white ">アカウント一覧</a></li>
                 <li><a href="{{route('accounts.userList')}}" class="nav-link px-2 text-white">ユーザー一覧</a></li>
                 <li><a href="{{route('accounts.itemList')}}" class="nav-link px-2 text-white">アイテム一覧</a></li>
                 <li><a href="{{route('accounts.useritemList')}}"
@@ -26,7 +26,8 @@
                        class="nav-link px-2 text-white">ユーザーメール受信一覧</a>
                 <li><a href="{{route('mailsmail_send')}}"
                        class="nav-link px-2 text-white">メールの送信</a>
-
+                <li><a href="{{route('followsfollow_List')}}"
+                       class="nav-link px-2 text-white">フォロー一覧</a>
             </ul>
             <div class="text-end">
                 <form method="post" action="{{route('accountsindex')}}">
@@ -38,9 +39,9 @@
                         <input type="hidden" name="action" value="search">
                     </div>
                 </form>
-                <form method="post" action="{{url('accounts/dologout')}}">
+                <form method="post" action="{{route('accounts.dologout')}}">
                     @csrf
-                    <button class="btn btn-warning btn btn-primary w-100 py-2" type="submit">ログアウト
+                    <button class="btn btn-warning btn btn-primary w-8 py-2" type="submit">ログアウト
                     </button>
                     <input type="hidden" name="action" value="dologout">
                 </form>

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AccountController;
+use App\Http\Controllers\Follow;
 use App\Http\Controllers\gameManagementController;
 use App\Http\Controllers\ItemListController;
 use App\Http\Controllers\LoginController;
@@ -51,12 +52,21 @@ Route::middleware(NoCacheMiddleware::class)->group(function () {
     Route::prefix('mails')->name('mails')->controller(mailController::class)->group(function () {
         Route::get('mailmaster', 'mail_index')->name('mail_index');//メールマスタ一覧
         Route::get('user_mailList', 'user_mailList')->name('user_mail_list');//メール受信一覧を表示
-        Route::post('send', 'send')->name('mail_send');//メール送信処理
+        Route::get('mail_send', 'show_send')->name('mail_send');//メール送信の表示
+        Route::post('mail_send', 'send')->name('mail_send');//メール送信処理
+
+    });
+    
+    //フォローのルートをグループ化
+    Route::prefix('follows')->name('follows')->controller(Follow::class)->group(function () {
+        //フォローリストを表示する
+        Route::get('follow', 'ShowFollowList')->name('follow_List');
+        Route::get('followList', 'User_Follow')->name('User_Follow');
     });
 
 
 //プレイヤー一覧を表示する
-    Route::get('accounts/userList', [UserListController::class, 'UserList'])->name('accounts.userList');
+    Route::get('users/userList', [UserListController::class, 'UserList'])->name('accounts.userList');
 
 //アイテム一覧を表示する
     Route::get('accounts/itemList', [ItemListController::class, 'ItemList'])->name('accounts.itemList');

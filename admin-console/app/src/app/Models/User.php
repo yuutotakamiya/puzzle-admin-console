@@ -18,4 +18,10 @@ class User extends Model
         return $this->belongsToMany(Item::class, 'user_items', 'user_id',
             'item_id')->withPivot('Quantity_in_possession');
     }
+
+    public function mails()
+    {
+        return $this->hasMany(UserMail::class);
+    }
+
 }

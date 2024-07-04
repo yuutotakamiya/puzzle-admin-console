@@ -10,14 +10,13 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('mails', function (Blueprint $table) {
+        Schema::create('follows', function (Blueprint $table) {
             $table->id();
-            $table->integer('item_id');//アイテムの名前のカラム
-            $table->string('text_message');//本文のカラム
+            $table->integer('user_id');
+            $table->boolean('Follow_condition');
             $table->timestamps();
 
-
-            $table->index('item_id');//index設定
+            $table->index('user_id');
         });
     }
 
@@ -26,6 +25,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('mails');
+        Schema::dropIfExists('follows');
     }
 };
