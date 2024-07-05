@@ -23,8 +23,12 @@ class mailController extends Controller
     //ユーザー受信メール一覧表示
     public function user_mailList(Request $request)
     {
-        $users = User::find(1);
-        return view('mails.mailreception', ['users' => $users]);
+        $user = User::find($request->id);
+        if (!empty($user)) {
+            $mails = $user->mails()->paginate(10);
+            $mails->appends(['id' => $request->id]);
+        }
+        return view('mails.mailreception', ['user' => $user]);
     }
 
     //ユーザーメール送信を表示する

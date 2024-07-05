@@ -13,8 +13,8 @@ class Mail extends Model
         'id',
     ];
 
-    public function mails()
+    public function mail()
     {
-        return $this->hasOne(Item::class);
+        return $this->belongsToMany(User::class, 'user_mails', 'mail_id', 'user_id');
     }
 }

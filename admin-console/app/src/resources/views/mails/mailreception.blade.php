@@ -3,17 +3,27 @@
 @section('h1','ユーザー受信メール一覧')
 @section('body')
     <table class="table table-bordered">
-        @if(!empty($users))
+        <form method="get" action="{{route('mailsuser_mail_list')}}">
+            @csrf
+            <div class="search">
+                <input type="search" id="search-text" name="id" class="searchform"
+                       placeholder="idを入力">
+                <button id="searchBtn">検索</button>
+                <input type="hidden" name="action" value="{{$user}}">
+            </div>
+        </form>
+
+        @if(!empty($user))
             <tr>
                 <th>id</th>
                 <th>ユーザー名</th>
                 <th>メールのid</th>
             </tr>
-            @foreach($users->mails as $mail)
+            @foreach($user->mails as $users)
                 <tr>
-                    <td>{{$mail->id}}</td>
-                    <td>{{$users->name}}</td>
-                    <td>{{$mail->mail_id}}</td>
+                    <td>{{$user['id']}}</td>
+                    <td>{{$user->name}}</td>
+                    <td>{{$users['mail_id']}}</td>
                 </tr>
             @endforeach
         @endif

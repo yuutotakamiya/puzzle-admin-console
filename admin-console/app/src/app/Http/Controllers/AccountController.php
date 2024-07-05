@@ -15,7 +15,7 @@ class AccountController extends Controller
         //テーブルの全てのレコードを取得
         //$accounts = Account::all();
         $accounts = Account::Paginate(5);
-        
+
         return view('accounts/index', ['accounts' => $accounts]);
 
         //return view('accounts/index',['title'=>$title]);
@@ -68,9 +68,15 @@ class AccountController extends Controller
             'name' => ['required', 'min:4', 'max:25'],
             'password' => ['required', 'confirmed']
         ]);
-
-        //レコードの追加
-        Account::create(['name' => $request['name'], 'password' => Hash::make($request['password'])]);
+        //条件を指定して取得
+        $account = Account::where('name', '=', $request['name'])->get();
+        // パスワードが一致していたら次の画面に遷移する
+        if ($account->count() == 0) {
+            //レコードの追加
+            Account::create(['name' => $request['name'], 'password' => Hash::make($request['password'])]);
+        } else {
+            return redirect()->route('accountscreate', ['error' => 'invalid']);
+        }
 
         //acconuts.indexにリダイレクト
         return redirect()->route('accountscompletion', ['name' => $request['name']]);

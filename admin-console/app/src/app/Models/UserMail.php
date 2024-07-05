@@ -10,5 +10,10 @@ class UserMail extends Model
         'id',
     ];
 
+    public function mails()
+    {
+        return $this->hasMany(User::class);
+    }
+
 
 }
