@@ -14,6 +14,6 @@
     <td>{{$name}}を登録しました</td>
     <br>
     <button type="button" onclick="location.href='{{route('accountsindex')}}'"
-            name="destroybutton">ユーザー一覧へ戻る
+            name="destroybutton">アカウント一覧へ戻る
     </button>
 @endsection

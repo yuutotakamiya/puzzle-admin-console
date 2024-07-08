@@ -16,7 +16,19 @@ class FollowTableSeeder extends Seeder
         //
         Follow::create([
             'user_id' => 1,
-            'Follow_condition' => 0
+            'follow_user_id' => 3,
+        ]);
+        Follow::create([
+            'user_id' => 2,
+            'follow_user_id' => 3,
+        ]);
+        Follow::create([
+            'user_id' => 3,
+            'follow_user_id' => 2,
+        ]);
+        Follow::create([
+            'user_id' => 1,
+            'follow_user_id' => 2,
         ]);
     }
 }

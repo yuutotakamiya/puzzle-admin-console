@@ -15,7 +15,7 @@ class UserMailController extends Controller
         $user = User::findOrFail($request->user_id);
 
         $user_mails = $user->mails;
-        
+
         return response()->json(UserMailResource::collection($user_mails));
 
 

@@ -14,7 +14,7 @@
 <td>{{$name}}のパスワードを更新しました</td>
 <br>
 <button type="button" onclick="location.href='{{route('accountsindex')}}'"
-        name="destroybutton">ユーザーリストに戻る
+        name="destroybutton">アカウント一覧に戻る
 </button>
 </body>
 </html>

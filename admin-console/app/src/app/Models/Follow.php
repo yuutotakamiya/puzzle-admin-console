@@ -8,9 +8,4 @@ use Illuminate\Database\Eloquent\Model;
 class Follow extends Model
 {
     use HasFactory;
-
-    public function follow()
-    {
-        return $this->hasMany(User::class);
-    }
 }

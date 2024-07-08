@@ -56,14 +56,12 @@ Route::middleware(NoCacheMiddleware::class)->group(function () {
         Route::post('mail_send', 'send')->name('mail_send');//メール送信処理
 
     });
-    
+
     //フォローのルートをグループ化
     Route::prefix('follows')->name('follows')->controller(Follow::class)->group(function () {
         //フォローリストを表示する
         Route::get('follow', 'ShowFollowList')->name('follow_List');
-        Route::get('followList', 'User_Follow')->name('User_Follow');
     });
-
 
 //プレイヤー一覧を表示する
     Route::get('users/userList', [UserListController::class, 'UserList'])->name('accounts.userList');

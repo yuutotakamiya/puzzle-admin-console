@@ -4,14 +4,14 @@
 @section('body')
     {{$accounts->links('vendor.pagination.bootstrap-5')}}
     <table class="table table-bordered">
+        <tr>
+            <th>id</th>
+            <th>名前</th>
+            <th>種別</th>
+            <th>効果値</th>
+            <th>説明</th>
+        </tr>
         @foreach($accounts as $itemList)
-            <tr>
-                <th>id</th>
-                <th>名前</th>
-                <th>種別</th>
-                <th>効果値</th>
-                <th>説明</th>
-            </tr>
             <tr>
                 <td>{{$itemList['id']}}</td>
                 <td>{{$itemList['name']}}</td>

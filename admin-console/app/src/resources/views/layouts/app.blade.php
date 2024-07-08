@@ -29,24 +29,14 @@
                 <li><a href="{{route('followsfollow_List')}}"
                        class="nav-link px-2 text-white">フォロー一覧</a>
             </ul>
-            <div class="text-end">
-                <form method="post" action="{{route('accountsindex')}}">
-                    @csrf
-                    <div class="search">
-                        <input type="search" id="search-text" name="name" class="searchform"
-                               placeholder="名前を入力">
-                        <button id="searchBtn">検索</button>
-                        <input type="hidden" name="action" value="search">
-                    </div>
-                </form>
-                <form method="post" action="{{route('accounts.dologout')}}">
-                    @csrf
-                    <button class="btn btn-warning btn btn-primary w-8 py-2" type="submit">ログアウト
-                    </button>
-                    <input type="hidden" name="action" value="dologout">
-                </form>
-            </div>
+            <form method="post" action="{{route('accounts.dologout')}}">
+                @csrf
+                <button class="btn btn-warning btn btn-primary w-8 py-2" type="submit">ログアウト
+                </button>
+                <input type="hidden" name="action" value="dologout">
+            </form>
         </div>
+    </div>
     </div>
 </header>
 @yield('body')
