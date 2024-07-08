@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\Models\User;
-use App\Models\User_item;
+use App\Models\Useritem;
 use Barryvdh\Debugbar\Facades\Debugbar;
 use Illuminate\Http\Request;
 
@@ -25,6 +25,6 @@ class UserItemListController extends Controller
             $items = $user->items()->paginate(10);
             $items->appends(['id' => $request->id]);
         }
-        return view('uers.useritemList', ['user' => $user, 'items' => $items ?? null]);
+        return view('users.useritemList', ['user' => $user, 'items' => $items ?? null]);
     }
 }

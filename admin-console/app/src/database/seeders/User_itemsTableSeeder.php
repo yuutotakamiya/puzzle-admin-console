@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Player_item;
-use App\Models\User_item;
+use App\Models\Useritem;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -15,12 +15,12 @@ class User_itemsTableSeeder extends Seeder
     public function run(): void
     {
         //
-        User_item::create([
+        Useritem::create([
             'user_id' => 1,
             'item_id' => 1,
             'Quantity_in_possession' => 20
         ]);
-        User_item::create([
+        Useritem::create([
             'user_id' => 2,
             'item_id' => 2,
             'Quantity_in_possession' => 4

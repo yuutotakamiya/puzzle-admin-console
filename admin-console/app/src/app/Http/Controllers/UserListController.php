@@ -13,6 +13,6 @@ class UserListController extends Controller
     {
         //$Players = User::all();
         $Players = User::Paginate(10);
-        return view('uers.userList', ['accounts' => $Players]);
+        return view('users.userList', ['accounts' => $Players]);
     }
 }

@@ -18,6 +18,7 @@
                 <th>id</th>
                 <th>ユーザー名</th>
                 <th>メールのid</th>
+                <th>受け取り</th>
             </tr>
             @foreach($user->mails as $users)
                 <tr>
