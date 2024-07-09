@@ -25,6 +25,7 @@
                     <td>{{$user['id']}}</td>
                     <td>{{$user->name}}</td>
                     <td>{{$users['mail_id']}}</td>
+                    <td>{{$users['condition']}}</td>
                 </tr>
             @endforeach
         @endif

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\Follow;
+use App\Http\Controllers\FollowController;
 use App\Http\Controllers\gameManagementController;
 use App\Http\Controllers\ItemListController;
 use App\Http\Controllers\LoginController;
@@ -58,7 +59,7 @@ Route::middleware(NoCacheMiddleware::class)->group(function () {
     });
 
     //フォローのルートをグループ化
-    Route::prefix('follows')->name('follows')->controller(Follow::class)->group(function () {
+    Route::prefix('follows')->name('follows')->controller(FollowController::class)->group(function () {
         //フォローリストを表示する
         Route::get('follow', 'ShowFollowList')->name('follow_List');
     });

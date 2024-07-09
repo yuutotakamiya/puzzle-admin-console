@@ -12,7 +12,7 @@ class UserMail extends Model
 
     public function mails()
     {
-        return $this->hasMany(User::class)->withPivot('condition');
+        return $this->hasMany(User::class)->with('condition');
     }
 
 
