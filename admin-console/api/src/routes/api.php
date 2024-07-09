@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FollowController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\UserController;
@@ -16,6 +17,12 @@ Route::middleware(NoCacheMiddleware::class)->group(function (){
     Route::get('users/{user_id}',[UserController::class,'show'])->name('');
     Route::get('users',[UserController::class,'index'])->name('user.index');
 
+    //ユーザー登録
+    Route::post('users/store',[UserController::class,'store'])->name('users.store');
+
+    //ユーザーの更新
+    Route::post('users/update',[UserController::class,'update'])->name('users.update');
+
     //アイテム一覧
     Route::get('items',[ItemController::class,'index'])->name('item.index');
 
@@ -27,6 +34,16 @@ Route::middleware(NoCacheMiddleware::class)->group(function (){
 
     //ユーザー受信メール一覧
     Route::get('user_mail/{user_id}',[UserMailController::class,'index'])->name('user-mail.index');
+
+    //フォロー一覧
+    Route::get('users_follow/{user_id}',[FollowController::class,'FollowList'])->name('follow.follow-list');
+
+    //フォロー登録処理
+    Route::post('users_follow/store',[FollowController::class,'store'])->name('users-follow.store');
+
+    //フォローの解除処理
+    Route::post('users_follow/delete/{user_id}',[FollowController::class,'destroy'])->name('users-follow.delete');
 });
+
 
 

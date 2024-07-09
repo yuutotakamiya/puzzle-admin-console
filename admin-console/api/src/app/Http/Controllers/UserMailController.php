@@ -17,7 +17,5 @@ class UserMailController extends Controller
         $user_mails = $user->mails;
 
         return response()->json(UserMailResource::collection($user_mails));
-
-
     }
 }

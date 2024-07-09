@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Resources\User_ItemResource;
 use App\Http\Resources\UserResource;
 use App\Models\User;
-use http\Env\Response;
 use Illuminate\Auth\Events\Validated;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
@@ -57,4 +56,44 @@ class UserController extends Controller
         ];
         return response()->json($response);
     }
+
+    //ユーザー登録
+    public function store(Request $request){
+        //バリデーションチェック
+        $validator = Validator::make($request->all(),[
+            'name'=>['required','string'],
+
+        ]);
+        if($validator->failed()){
+            return response()->json($validator->errors(),400);
+        }
+        $user = User::create([
+           'name'=>$request->name,
+           'level'=>0,
+            'exp'=>0,
+            'life'=>0,
+        ]);
+        return response()->json(['user_id'=>$user->id]);
+    }
+
+    //ユーザーの更新
+    public function update(Request $request){
+        //バリデーションチェック
+        $validator = Validator::make($request->all(),[
+            'name'=>['required','string'],
+        ]);
+        if($validator->failed()){
+            return response()->json($validator->errors(),400);
+        }
+
+        $user = User::findOrFail($request->user_id);
+
+        if(!empty($request->name)){
+            $user->name = $request->name;
+        }
+        $user->save();
+
+        return response()->json();
+    }
+
 }

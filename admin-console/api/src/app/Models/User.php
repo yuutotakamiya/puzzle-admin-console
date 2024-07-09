@@ -24,4 +24,10 @@ class User extends Model
         return $this->hasMany(UserMail::class);
     }
 
+    public function follows()
+    {
+        return $this->belongsToMany(User::class, 'follows', 'user_id',
+            'follow_user_id');
+    }
+
 }

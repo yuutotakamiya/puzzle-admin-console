@@ -16,11 +16,10 @@
                 <th>id</th>
                 <th>フォローしたユーザー名</th>
                 <th>フォローされたユーザー名</th>
-
             </tr>
             @foreach($user->follows as $User_follow)
                 <tr>
-                    <td>{{$User_follow->id}}</td>
+                    <td>{{$user->id}}</td>
                     <td>{{$user->name}}</td>
                     <td>{{$User_follow->name}}</td>
                 </tr>
