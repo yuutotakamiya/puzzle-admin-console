@@ -48,6 +48,7 @@ class FollowController extends Controller
         //バリデーションチェック
         $validator = Validator::make($request->all(),[
             'id'=>['required','int'],
+            'user_id'=>['required','int'],
             'follow_user_id'=>['required','int']
         ]);
         if($validator->failed()){

@@ -32,7 +32,7 @@ Content-Type: application/json
 Accept: application/json
 
 {
-    "user_id":2,
+    "user_id":1,
     "follow_user_id": 3
 }
 
