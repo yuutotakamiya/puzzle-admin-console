@@ -37,8 +37,8 @@ class FollowController extends Controller
         }
         $user = Follow::create([
             'id'=>$request->id,
-            'user_id'=>1,
-            'follow_user_id'=>4
+            'user_id'=>$request['id'],
+            'follow_user_id'=>$request['follow_user_id']
         ]);
         return response()->json(['id'=>$user->id]);
     }
