@@ -37,8 +37,8 @@ class FollowController extends Controller
         }
         $user = Follow::create([
             'id'=>$request->id,
-            'user_id'=>$request['id'],
-            'follow_user_id'=>$request['follow_user_id']
+            'user_id'=>$request->user_id,
+            'follow_user_id'=>$request->follow_user_id
         ]);
         return response()->json(['id'=>$user->id]);
     }
@@ -48,7 +48,6 @@ class FollowController extends Controller
         //バリデーションチェック
         $validator = Validator::make($request->all(),[
             'id'=>['required','int'],
-            'user_id'=>['required','int'],
             'follow_user_id'=>['required','int']
         ]);
         if($validator->failed()){
