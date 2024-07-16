@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Follow;
+use App\Models\follow_logs;
 use App\Models\User;
 use Illuminate\Http\Request;
 

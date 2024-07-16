@@ -28,16 +28,17 @@
                        class="nav-link px-2 text-white">メールの送信</a>
                 <li><a href="{{route('followsfollow_List')}}"
                        class="nav-link px-2 text-white">フォロー一覧</a>
+                <li><a href="{{route('follow_logslogs')}}"
+                       class="nav-link px-2 text-white">フォローログ一覧</a>
             </ul>
-            <form method="post" action="{{route('accounts.dologout')}}">
-                @csrf
-                <button class="btn btn-warning btn btn-primary w-8 py-2" type="submit">ログアウト
-                </button>
-                <input type="hidden" name="action" value="dologout">
-            </form>
         </div>
     </div>
-    </div>
+    <form method="post" action="{{route('accounts.dologout')}}">
+        @csrf
+        <button class="btn btn-warning btn btn-primary w-8 py-2" type="submit">ログアウト
+        </button>
+        <input type="hidden" name="action" value="dologout">
+    </form>
 </header>
 @yield('body')
 <script src="/js/bootstrap.bundle.min.js"

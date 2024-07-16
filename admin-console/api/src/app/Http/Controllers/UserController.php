@@ -5,10 +5,12 @@ namespace App\Http\Controllers;
 use App\Http\Resources\User_ItemResource;
 use App\Http\Resources\UserResource;
 use App\Models\User;
+use Exception;
 use Illuminate\Auth\Events\Validated;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
@@ -23,8 +25,8 @@ class UserController extends Controller
         if($validator->failed()){
             return response()->json($validator->errors(),400);
         }
-        $users = User::where('level', '>=', 20)
-            ->where('level', '<=', 30)
+        $users = User::where('level', '>=', 1)
+            ->where('level', '<', 30)
             ->orderby('level')
             ->get();
         return response()->json(
@@ -34,7 +36,7 @@ class UserController extends Controller
     //idで表示
     public function show(Request $request)
     {
-        $user = User::findOrfail($request->user_id);
+        $user = User::findOrfail($request->id);
         $response=[
             "detail"=>$user
         ];
@@ -67,13 +69,22 @@ class UserController extends Controller
         if($validator->failed()){
             return response()->json($validator->errors(),400);
         }
-        $user = User::create([
-           'name'=>$request->name,
-           'level'=>0,
-            'exp'=>0,
-            'life'=>0,
-        ]);
-        return response()->json(['user_id'=>$user->id]);
+        //例外エラー
+        try{
+            //トランザクション処理
+            DB::transaction(function () use($request) {
+                [
+                $user = User::create([
+                    'name' => $request->name,
+                    'level' => 0,
+                    'exp' => 0,
+                    'life' => 0,
+                ])];
+                return response()->json(['user_id' => $user->id]);
+            });
+        }catch (Exception $e){
+            return response()->json($e, 500);
+        }
     }
 
     //ユーザーの更新
@@ -86,14 +97,17 @@ class UserController extends Controller
             return response()->json($validator->errors(),400);
         }
 
-        $user = User::findOrFail($request->user_id);
-
-        if(!empty($request->name)){
-            $user->name = $request->name;
+        try{
+            DB::transaction(function () use($request){
+                $user = User::findOrFail($request->user_id);
+                if(!empty($request->name)){
+                    $user->name = $request->name;
+                }
+                $user->save();
+            });
+            return response()->json();
+        }catch (Exception $e){
+            return response()->json($e, 500);
         }
-        $user->save();
-
-        return response()->json();
     }
-
 }

@@ -6,6 +6,7 @@ use App\Http\Controllers\FollowController;
 use App\Http\Controllers\gameManagementController;
 use App\Http\Controllers\ItemListController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\logscontroller;
 use App\Http\Controllers\mailController;
 use App\Http\Controllers\UserItemListController;
 use App\Http\Controllers\UserListController;
@@ -62,6 +63,12 @@ Route::middleware(NoCacheMiddleware::class)->group(function () {
     Route::prefix('follows')->name('follows')->controller(FollowController::class)->group(function () {
         //フォローリストを表示する
         Route::get('follow', 'ShowFollowList')->name('follow_List');
+
+    });
+    //ログのルートをグループ化
+    Route::prefix('follow_logs')->name('follow_logs')->controller(logscontroller::class)->group(function () {
+        //フォローのログを表示する
+        Route::get('logs', 'show_follow_log')->name('logs');
     });
 
 //プレイヤー一覧を表示する

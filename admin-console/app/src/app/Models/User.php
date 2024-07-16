@@ -30,4 +30,9 @@ class User extends Model
             'follow_user_id');
     }
 
+    public function logs()
+    {
+        return $this->hasMany(follow_logs::class);
+    }
+
 }

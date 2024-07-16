@@ -29,5 +29,9 @@ class User extends Model
         return $this->belongsToMany(User::class, 'follows', 'user_id',
             'follow_user_id');
     }
+    public function logs()
+    {
+        return $this->hasMany(follow_logs::class);
+    }
 
 }
