@@ -18,7 +18,7 @@ class FollowController extends Controller
     public function FollowList(Request $request){
 
         //指定のユーザーを取得
-        $user = User::findOrFail($request->user_id);
+        $user = User::findOrFail($request->follow_user_id);
 
         //フォロー一覧をリレーションで取得
         $users = $user->follows;
