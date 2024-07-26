@@ -1,13 +1,13 @@
 <?php
 
 use App\Http\Controllers\AccountController;
-use App\Http\Controllers\Follow;
 use App\Http\Controllers\FollowController;
 use App\Http\Controllers\gameManagementController;
 use App\Http\Controllers\ItemListController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\logscontroller;
 use App\Http\Controllers\mailController;
+use App\Http\Controllers\stageController;
 use App\Http\Controllers\UserItemListController;
 use App\Http\Controllers\UserListController;
 use App\Http\Middleware\AuthMiddleware;
@@ -65,11 +65,19 @@ Route::middleware(NoCacheMiddleware::class)->group(function () {
         Route::get('follow', 'ShowFollowList')->name('follow_List');
 
     });
-    //ログのルートをグループ化
+    //フォローログのルートをグループ化
     Route::prefix('follow_logs')->name('follow_logs')->controller(logscontroller::class)->group(function () {
         //フォローのログを表示する
         Route::get('logs', 'show_follow_log')->name('logs');
     });
+
+    //ステージのルートをグループ化
+    Route::prefix('stages')->name('stages')->controller(stageController::class)->group(function () {
+        //フォローのログを表示する
+        Route::get('stage', 'index')->name('stage.index');
+
+    });
+
 
 //プレイヤー一覧を表示する
     Route::get('users/userList', [UserListController::class, 'UserList'])->name('accounts.userList');

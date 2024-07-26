@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 
 class logscontroller extends Controller
 {
+    //フォローログを表示
     public function show_follow_log(Request $request)
     {
         $user = User::find($request->id);
@@ -18,5 +19,10 @@ class logscontroller extends Controller
         }
 
         return view('Follow.follow_logs', ['users' => $users ?? null]);
+    }
+
+    public function show_stage_log()
+    {
+
     }
 }
