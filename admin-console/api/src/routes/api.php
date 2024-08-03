@@ -43,6 +43,9 @@ Route::middleware(NoCacheMiddleware::class)->group(function (){
 
     //フォローの解除処理
     Route::post('users_follow/delete/{user_id}',[FollowController::class,'destroy'])->name('users-follow.delete');
+
+    //島のマスタ情報一覧
+    Route::get('',[]);
 });
 
 

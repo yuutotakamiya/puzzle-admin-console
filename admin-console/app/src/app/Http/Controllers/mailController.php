@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Mail;
 use App\Models\User;
-use App\Models\UserData;
 use App\Models\UserMail;
 use Barryvdh\Debugbar\Facades\Debugbar;
 use Illuminate\Http\Request;

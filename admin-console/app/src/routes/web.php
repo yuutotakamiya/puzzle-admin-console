@@ -1,9 +1,11 @@
 <?php
 
 use App\Http\Controllers\AccountController;
+use App\Http\Controllers\blockController;
 use App\Http\Controllers\FollowController;
 use App\Http\Controllers\gameManagementController;
 use App\Http\Controllers\ItemListController;
+use App\Http\Controllers\LandController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\logscontroller;
 use App\Http\Controllers\mailController;
@@ -73,9 +75,21 @@ Route::middleware(NoCacheMiddleware::class)->group(function () {
 
     //ステージのルートをグループ化
     Route::prefix('stages')->name('stages')->controller(stageController::class)->group(function () {
-        //フォローのログを表示する
+        //ステージマスタ情報を表示
         Route::get('stage', 'index')->name('stage.index');
+        Route::get('logs', 'show_stage_log')->name('stages.log');
+    });
 
+    //島のルートをグループ化
+    Route::prefix('lands')->name('lands')->controller(LandController::class)->group(function () {
+        //島の情報を表示
+        Route::get('land', 'index')->name('land');
+    });
+
+    //ブロックのルートをグループ化
+    Route::prefix('blocks')->name('blocks')->controller(blockController::class)->group(function () {
+        //ブロックの情報を表示
+        Route::get('blocks', 'index')->name('blocks');
     });
 
 
