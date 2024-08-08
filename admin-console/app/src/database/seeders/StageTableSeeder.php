@@ -11,8 +11,7 @@ class StageTableSeeder extends Seeder
     {
         Stage::create([
             'hand_num' => 100,
-            'time_limit' => 60,
-            'url' => 'aaaaa'
+            'time_limit' => 60
         ]);
 
     }

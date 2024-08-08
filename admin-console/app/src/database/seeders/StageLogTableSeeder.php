@@ -12,7 +12,7 @@ class StageLogTableSeeder extends Seeder
         stageLog::create([
             'user_id' => 1,
             'stage_id' => 1,
-            'stage_outcome' => 0
+            'result' => 0
         ]);
     }
 }

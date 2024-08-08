@@ -10,7 +10,7 @@
                 <th>ブロックを置いたユーザーID</th>
                 <th>種類</th>
                 <th>Xの座標</th>
-                <th>Yの座標</th>
+                <th>Zの座標</th>
             </tr>
             @foreach($block as $blocks)
                 <tr>
@@ -19,7 +19,7 @@
                     <td>{{$blocks['block_user_id']}}</td>
                     <td>{{$blocks['type']}}</td>
                     <td>{{$blocks['x_Direction']}}</td>
-                    <td>{{$blocks['y_Direction']}}</td>
+                    <td>{{$blocks['z_Direction']}}</td>
                 </tr>
             @endforeach
         </table>

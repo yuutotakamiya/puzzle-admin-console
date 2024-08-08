@@ -33,7 +33,8 @@ Accept: application/json
 
 {
     "user_id":1,
-    "follow_user_id": 3
+    "follow_user_id":2,
+    "action": 1
 }
 
 ###フォローの解除
@@ -42,8 +43,8 @@ Content-Type: application/json
 Accept: application/json
 
 {
-    "user_id": 1,
-    "follow_user_id": 3
+    "follow_user_id": 3,
+    "action": 2
 }
 
 ###ユーザー登録
@@ -68,4 +69,30 @@ Accept: application/json
     "name":"jobi2",
     "level": 3,
     "exp": 5
+}
+
+
+###ステージマスタ
+GET http://localhost:8000/api/stage/
+Accept: application/json
+
+###島の情報
+GET http://localhost:8000/api/land/
+Accept: application/json
+
+###ブロックの情報取得
+GET http://localhost:8000/api/block/1
+Accept: application/json
+
+###ブロックの情報を登録
+POST http://localhost:8000/api/block/store
+Content-Type: application/json
+Accept: application/json
+
+{
+    "land_id":1,
+    "block_user_id": 1,
+    "type": "ab",
+    "x_Direction": 1,
+    "z_Direction": 1
 }

@@ -1,8 +1,11 @@
 <?php
 
+use App\Http\Controllers\blockController;
 use App\Http\Controllers\FollowController;
 use App\Http\Controllers\ItemController;
+use App\Http\Controllers\LandController;
 use App\Http\Controllers\MailController;
+use App\Http\Controllers\stageController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserMailController;
 use App\Http\Middleware\NoCacheMiddleware;
@@ -44,8 +47,17 @@ Route::middleware(NoCacheMiddleware::class)->group(function (){
     //フォローの解除処理
     Route::post('users_follow/delete/{user_id}',[FollowController::class,'destroy'])->name('users-follow.delete');
 
-    //島のマスタ情報一覧
-    Route::get('',[]);
+    //ステージのマスタ情報一覧
+    Route::get('stage',[stageController::class,'index'])->name('stage.index');
+
+    //島の情報一覧
+    Route::get('land',[LandController::class,'index'])->name('land.index');
+
+    //ブロックの情報一覧
+    Route::get('block/{land_id}',[blockController::class,'index'])->name('block.index');
+
+    //ブロックの情報登録
+    Route::post('block/store',[blockController::class,'store'])->name('block.store');
 });
 
 

@@ -5,15 +5,15 @@ namespace App\Http\Resources;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class Follow_logResource extends JsonResource
+class LandResource extends JsonResource
 {
     public function toArray(Request $request): array
     {
         return [
             'id'=>$this->id,
             'user_id'=>$this->user_id,
-            'target_user_id'=>$this->target_user_id,
-            'action'=>$this->action
+            'land_name'=>$this->land_name,
+            'complete'=>$this->complete
         ];
     }
 }

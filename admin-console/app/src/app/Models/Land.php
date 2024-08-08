@@ -12,9 +12,4 @@ class Land extends Model
     protected $guarded = [
         'id',
     ];
-
-    public function blocks()
-    {
-        return $this->hasMany(block::class);
-    }
 }

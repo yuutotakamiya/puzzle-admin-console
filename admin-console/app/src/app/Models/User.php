@@ -34,5 +34,4 @@ class User extends Model
     {
         return $this->hasMany(follow_logs::class);
     }
-
 }

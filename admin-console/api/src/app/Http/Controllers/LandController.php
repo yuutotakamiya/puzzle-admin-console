@@ -2,15 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\LandResource;
 use App\Models\Land;
 
 class LandController extends Controller
 {
-    //島のマスタ情報をviewに渡す
+    //島のマスタ情報
     public function index()
     {
         $land = Land::all();
 
-        return view('land.land', ['land' => $land]);
+        return response()->json([LandResource::collection($land)]);
     }
 }

@@ -16,7 +16,7 @@ return new class extends Migration {
             $table->integer('block_user_id');//ブロックを置いたユーザーID
             $table->string('type');//ブロックの種類　
             $table->integer('x_Direction');//xの座標
-            $table->integer('y_Direction');//yの座標
+            $table->integer('z_Direction');//zの座標
             $table->timestamps();
         });
     }

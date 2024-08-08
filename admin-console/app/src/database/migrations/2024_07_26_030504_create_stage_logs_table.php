@@ -11,7 +11,7 @@ return new class extends Migration {
             $table->id();
             $table->integer('stage_id');
             $table->integer('user_id');
-            $table->boolean('stage_outcome');
+            $table->boolean('result');
             $table->timestamps();
         });
     }

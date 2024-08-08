@@ -11,7 +11,7 @@ return new class extends Migration {
             $table->id();
             $table->integer('hand_num');//残り手数のカラム
             $table->integer('time_limit');//制限時間のカラム
-            $table->string('url');//urlのカラム
+            //$table->string('url');//urlのカラム
             $table->timestamps();
         });
     }

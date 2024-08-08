@@ -14,6 +14,7 @@ return new class extends Migration {
             $table->id();
             $table->integer('user_id');//ユーザーidのカラム
             $table->string('land_name');//島の名前
+            $table->boolean('complete');//完了したかどうか
             $table->timestamps();
         });
     }

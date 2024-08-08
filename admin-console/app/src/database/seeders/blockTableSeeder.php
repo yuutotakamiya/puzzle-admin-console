@@ -14,7 +14,7 @@ class blockTableSeeder extends Seeder
             'block_user_id' => 1,
             'type' => 'aaa',
             'x_Direction' => 1,
-            'y_Direction' => 1,
+            'z_Direction' => 1,
         ]);
     }
 }

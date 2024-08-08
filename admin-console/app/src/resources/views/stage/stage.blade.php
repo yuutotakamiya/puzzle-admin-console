@@ -8,14 +8,12 @@
                 <th>id</th>
                 <th>残り手数</th>
                 <th>制限時間</th>
-                <th>url</th>
             </tr>
             @foreach($stage as $stages)
                 <tr>
                     <td>{{$stages['id']}}</td>
                     <td>{{$stages['hand_num']}}</td>
                     <td>{{$stages['time_limit']}}</td>
-                    <td>{{$stages['url']}}</td>
                 </tr>
             @endforeach
         </table>

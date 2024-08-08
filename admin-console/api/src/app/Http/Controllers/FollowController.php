@@ -18,7 +18,7 @@ class FollowController extends Controller
     public function FollowList(Request $request){
 
         //指定のユーザーを取得
-        $user = User::findOrFail($request->follow_user_id);
+        $user = User::find($request->user_id);
 
         //フォロー一覧をリレーションで取得
         $users = $user->follows;
@@ -38,7 +38,9 @@ class FollowController extends Controller
         if($validator->failed()){
             return response()->json($validator->errors(),400);
         }
-        $follow_user =Follow::where('user_id', '=', $request['user_id'])->get();
+        $follow_user =Follow::where('user_id', '=', $request['user_id'] )
+        ->where('follow_user_id', '=', $request['follow_user_id'] )->get();
+        //dd($follow_user);
         //同じ人をフォローしていなかったら
         if($follow_user->count() == 0) {
             //例外エラー
@@ -54,7 +56,7 @@ class FollowController extends Controller
                     $logs = follow_logs::create([
                        'id'=>$request->id,
                        'user_id'=>$request->user_id,
-                       'target_user_id'=>$request->target_user_id,
+                       'target_user_id'=>$request->follow_user_id,
                        'action'=>$request->action
                     ]);
                     return response()->json(['id' => $user->id,'user_id'=>$logs->id]);
@@ -85,9 +87,8 @@ class FollowController extends Controller
             $user->follows()->detach($request->follow_user_id)];
             });
             follow_logs::create([
-                'id'=>$request->id,
                 'user_id'=>$request->user_id,
-                'target_user_id'=>$request->target_user_id,
+                'target_user_id'=>$request->follow_user_id,
                 'action'=>$request->action
             ]);
             return response()->json(['フォローの解除しました']);
