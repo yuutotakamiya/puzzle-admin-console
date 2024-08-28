@@ -72,7 +72,7 @@ class UserController extends Controller
         //例外エラー
         try{
             //トランザクション処理
-            DB::transaction(function () use($request) {
+            $user = DB::transaction(function () use($request) {
                 [
                 $user = User::create([
                     'name' => $request->name,
@@ -80,8 +80,10 @@ class UserController extends Controller
                     'exp' => 0,
                     'life' => 0,
                 ])];
-                return response()->json(['user_id' => $user->id]);
+                return $user;
+
             });
+            return response()->json(['user_id' => $user->id]);
         }catch (Exception $e){
             return response()->json($e, 500);
         }

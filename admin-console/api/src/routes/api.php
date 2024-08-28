@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware(NoCacheMiddleware::class)->group(function (){
 
     //ユーザー一覧
-    Route::get('users/{user_id}',[UserController::class,'show'])->name('users.user-id');
+    Route::get('users/{user_id}',[UserController::class,'show'])->name('users.user.id');
     Route::get('users',[UserController::class,'index'])->name('user.index');
 
     //ユーザー登録
