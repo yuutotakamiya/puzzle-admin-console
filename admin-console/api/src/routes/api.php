@@ -48,7 +48,7 @@ Route::middleware(NoCacheMiddleware::class)->group(function (){
     Route::post('users_follow/delete/{user_id}',[FollowController::class,'destroy'])->name('users-follow.delete');
 
     //ステージのマスタ情報一覧
-    Route::get('stage',[stageController::class,'index'])->name('stage.index');
+    Route::get('stage/{stage_id}',[stageController::class,'index'])->name('stage.index');
 
     //島の情報一覧
     Route::get('land',[LandController::class,'index'])->name('land.index');

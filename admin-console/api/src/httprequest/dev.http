@@ -72,7 +72,7 @@ Accept: application/json
 }
 
 ###ステージマスタ
-GET http://localhost:8000/api/stage/
+GET http://localhost:8000/api/stage/1
 Accept: application/json
 
 ###島の情報

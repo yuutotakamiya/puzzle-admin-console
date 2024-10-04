@@ -15,9 +15,10 @@ class stageController extends Controller
 {
     public function index(Request $request)
     {
-        $stage = StageLog::where('stage_id')->min('min_hand_num');
+        $stage_min_num = StageLog::where('stage_id','=',$request['stage_id'])->min('min_hand_num');
 
-        return response()->json(StageLog::collection($stage));
+        $Stage_min_num = ['min_hand_num' => $stage_min_num ];
+        return response()->json($Stage_min_num);
     }
 
 }
