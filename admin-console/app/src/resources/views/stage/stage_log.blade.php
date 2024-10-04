@@ -17,13 +17,15 @@
                 <th>ユーザーID</th>
                 <th>ステージID</th>
                 <th>クリアor失敗</th>
+                <th>最短手数</th>
             </tr>
             @foreach($stage_log as $stage_logs)
                 <tr>
                     <td>{{$stage_logs['id']}}</td>
                     <td>{{$stage_logs['stage_id']}}</td>
                     <td>{{$stage_logs['user_id']}}</td>
-                    <td>{{$stage_logs['stage_outcome']}}</td>
+                    <td>{{$stage_logs['result']}}</td>
+                    <td>{{$stage_logs['min_hand_num']}}</td>
                 </tr>
             @endforeach
         </table>

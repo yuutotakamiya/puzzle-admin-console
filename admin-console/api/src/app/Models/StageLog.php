@@ -6,4 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class StageLog extends Model
 {
+    protected $guarded = [
+        'id',
+    ];
 }

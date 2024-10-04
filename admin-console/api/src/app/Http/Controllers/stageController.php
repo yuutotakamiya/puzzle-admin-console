@@ -3,26 +3,21 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\StageResource;
+use App\Http\Resources\Stage_logResource;
 use App\Models\Stage;
+use App\Models\User;
 use App\Models\StageLog;
-use Database\Seeders\StageTableSeeder;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
+use Exception;
 
 class stageController extends Controller
 {
     public function index(Request $request)
     {
-        $stage = Stage::all();
+        $stage = StageLog::where('stage_id')->min('min_hand_num');
 
-        StageLog::create([
-            'id'=>$request->id,
-            'user_id'=>$request->user_id,
-            'stage_id'=>$request->stage_id,
-            'result'=>$request->result
-        ]);
-
-        return response()->json(StageResource::collection($stage));
+        return response()->json(StageLog::collection($stage));
     }
 
 }

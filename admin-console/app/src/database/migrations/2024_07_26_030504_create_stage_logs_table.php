@@ -12,6 +12,7 @@ return new class extends Migration {
             $table->integer('stage_id');
             $table->integer('user_id');
             $table->boolean('result');
+            $table->integer('min_hand_num');
             $table->timestamps();
         });
     }

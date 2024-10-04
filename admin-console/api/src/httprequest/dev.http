@@ -1,9 +1,9 @@
 ###ユーザー情報取得
-GET http://localhost:8000/api/users/1
+GET https://api-cube-puzzle.japaneast.cloudapp.azure.com/api/users/1
 Accept: application/json ###クライアントがJsonを受け付ける指定
 
 ###ユーザー一覧取得
-GET http://localhost:8000/api/users?min_level=1&max_level=9
+GET https://api-cube-puzzle.japaneast.cloudapp.azure.com/api/users?min_level=1&max_level=9
 Accept: application/json
 
 ###アイテム一覧取得
@@ -70,7 +70,6 @@ Accept: application/json
     "level": 3,
     "exp": 5
 }
-
 
 ###ステージマスタ
 GET http://localhost:8000/api/stage/

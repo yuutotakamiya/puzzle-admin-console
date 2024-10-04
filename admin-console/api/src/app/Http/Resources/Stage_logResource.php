@@ -14,6 +14,7 @@ class Stage_logResource extends JsonResource
             'stage_id'=>$this->stage_id,
             'user_id'=>$this->user_id,
             'result'=>$this->result,
+            'min_hand_num'=>$this->min_hand_num
         ];
     }
 }
