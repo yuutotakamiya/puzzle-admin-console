@@ -10,10 +10,12 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('lands', function (Blueprint $table) {
+        Schema::create('multi_stages', function (Blueprint $table) {
             $table->id();
             $table->integer('multi_stage_id');//マルチステージID
-            $table->integer('block_mission_num');//マルチステージでブロックを埋める合計の数
+            $table->integer('user_id');//ユーザーのID
+            $table->integer('multi_block_num');//マルチステージでブロックを埋めた数
+            $table->boolean('result');//完了したかどうか
             $table->timestamps();
         });
     }
@@ -23,6 +25,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('lands');
+        Schema::dropIfExists('multi_stages');
     }
 };

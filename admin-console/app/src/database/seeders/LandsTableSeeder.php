@@ -10,9 +10,8 @@ class LandsTableSeeder extends Seeder
     public function run(): void
     {
         Land::create([
-            'user_id' => 1,
-            'land_name' => 'ウォーターセブン',
-            'complete' => 0
+            'multi_stage_id' => 1,
+            'block_mission_num' => 100
         ]);
     }
 }

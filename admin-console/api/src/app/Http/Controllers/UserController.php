@@ -81,9 +81,11 @@ class UserController extends Controller
                     'life' => 0,
                 ])];
                 return $user;
-
             });
-            return response()->json(['user_id' => $user->id]);
+            //トークンの生成
+            $token = $user->createToken($request->name)->plainTextToken;
+            //トークンとユーザーIDをjsonで返す
+            return response()->json(['user_id' => $user->id,'token'=>$token]);
         }catch (Exception $e){
             return response()->json($e, 500);
         }
@@ -98,7 +100,6 @@ class UserController extends Controller
         if($validator->failed()){
             return response()->json($validator->errors(),400);
         }
-
         try{
             DB::transaction(function () use($request){
                 $user = User::findOrFail($request->user_id);

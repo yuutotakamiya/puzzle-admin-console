@@ -11,9 +11,8 @@ class LandResource extends JsonResource
     {
         return [
             'id'=>$this->id,
-            'user_id'=>$this->user_id,
-            'land_name'=>$this->land_name,
-            'complete'=>$this->complete
+            'multi_stage_id'=>$this->multi_stage_id,
+            'block_mission_num'=>$this->block_mission_num
         ];
     }
 }
