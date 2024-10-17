@@ -9,10 +9,10 @@ return new class extends Migration {
     {
         Schema::create('stage_logs', function (Blueprint $table) {
             $table->id();
-            $table->integer('stage_id');
-            $table->integer('user_id');
-            $table->boolean('result');
-            $table->integer('min_hand_num');
+            $table->integer('stage_id');//ステージID
+            $table->integer('user_id');//ユーザーID
+            $table->boolean('result');//完了or失敗
+            $table->integer('min_hand_num');//手数
             $table->timestamps();
         });
     }

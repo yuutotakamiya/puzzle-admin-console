@@ -12,8 +12,9 @@ return new class extends Migration {
     {
         Schema::create('lands', function (Blueprint $table) {
             $table->id();
-            $table->integer('multi_stage_id');//マルチステージID
-            $table->integer('block_mission_num');//マルチステージでブロックを埋める合計の数
+            $table->integer('stage_id');//マルチステージID
+            $table->integer('block_mission_sum');//マルチステージでブロックを埋める合計の数
+            $table->boolean('result');//完了or未完了
             $table->timestamps();
         });
     }

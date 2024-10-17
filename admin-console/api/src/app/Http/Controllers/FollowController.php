@@ -38,7 +38,7 @@ class FollowController extends Controller
         if($validator->failed()){
             return response()->json($validator->errors(),400);
         }
-        $follow_user =Follow::where('user_id', '=', $request['user_id'] )
+        $follow_user =Follow::where('user_id', '=', $request['user_id'])
         ->where('follow_user_id', '=', $request['follow_user_id'] )->get();
         //dd($follow_user);
         //同じ人をフォローしていなかったら

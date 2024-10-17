@@ -11,8 +11,9 @@ class LandResource extends JsonResource
     {
         return [
             'id'=>$this->id,
-            'multi_stage_id'=>$this->multi_stage_id,
-            'block_mission_num'=>$this->block_mission_num
+            'stage_id'=>$this->stage_id,//ステージID
+            'block_mission_sum'=>$this->block_mission_sum,//ブロックを埋める合計の数
+            'result'=>$this->result//完了or未完了
         ];
     }
 }

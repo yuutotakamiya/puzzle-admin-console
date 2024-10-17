@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\Multi_StageResource;
+use App\Http\Resources\LandStatusResource;
 use App\Http\Resources\StageResource;
 use App\Http\Resources\Stage_logResource;
 use App\Models\multi_stage;
@@ -15,6 +15,7 @@ use Exception;
 
 class stageController extends Controller
 {
+    //ステージ毎の最短手数
     public function index(Request $request)
     {
         $stage_min_num = StageLog::where('stage_id','=',$request['stage_id'])->min('min_hand_num');
@@ -23,19 +24,13 @@ class stageController extends Controller
         return response()->json($Stage_min_num);
     }
 
-    //マルチステージの登録
-    public function store(Request $request)
+    //自身の最短手数
+    public function show(Request $request)
     {
-        try{
-            $Multi_stage = multi_stage::create([
-                'multi_stage_id' => $request->multi_stage_id,//マルチステージID
-                'user_id' => 1,//ユーザーID
-                'multi_block_num' => 10,//マルチステージでブロックを埋めた数
-                'result' => 0//完了したかどうか
-            ]);
-            return response()->json(['multi_stage_id' => $Multi_stage->id]);
-        }catch (Exception $e){
-            return response()->json($e, 500);
-        }
+        $min_hand = StageLog::where('user_id','=',$request['user_id'])
+            ->min('min_hand_num');
+
+        $Stage_hand__min_num = ['min_hand_num' => $min_hand,'user_id'=>$min_hand,'stage_id'=>$min_hand];
+        return response()->json($Stage_hand__min_num);
     }
 }

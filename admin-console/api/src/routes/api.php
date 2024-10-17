@@ -47,14 +47,20 @@ Route::middleware(NoCacheMiddleware::class)->group(function (){
     //フォローの解除処理
     Route::post('users_follow/delete/{user_id}',[FollowController::class,'destroy'])->middleware('auth:sanctum')->name('users-follow.delete');
 
-    //ステージのマスタ情報一覧
+    //ステージ毎の最短手数
     Route::get('stage/{stage_id}',[stageController::class,'index'])->middleware('auth:sanctum')->name('stage.index');
 
-    //マルチステージの登録
-    Route::post('multi_stage',[stageController::class,'store'])->middleware('auth:sanctum')->name('multi-stage');
+    //自分自身の最短手数
+    Route::get('min_hand_stage/{user_id}',[stageController::class,'show'])->middleware('auth:sanctum')->name('stage.index');
 
     //島の情報一覧
-    Route::get('land',[LandController::class,'index'])->middleware('auth:sanctum')->name('land.index');
+    Route::get('land/index',[LandController::class,'index'])->middleware('auth:sanctum')->name('land.index');
+
+    //島の詳細情報一覧
+    Route::get('land/show',[LandController::class,'show'])->middleware('auth:sanctum')->name('land.show');
+
+    //島の状況の登録
+    Route::post('land_block/store',[LandController::class,'store'])->middleware('auth:sanctum')->name('land.store');
 
     //ブロックの情報一覧
     Route::get('block/{land_id}',[blockController::class,'index'])->middleware('auth:sanctum')->name('block.index');

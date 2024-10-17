@@ -28,6 +28,6 @@ class DatabaseSeeder extends Seeder
         $this->call(StageLogTableSeeder::class);
         $this->call(LandsTableSeeder::class);
         $this->call(blockTableSeeder::class);
-        $this->call(multi_stageTableSeeder::class);
+        $this->call(LandStatusTableSeeder::class);
     }
 }
