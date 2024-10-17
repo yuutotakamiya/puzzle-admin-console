@@ -1,6 +1,6 @@
 
 #ER図
-![[PuzzleER図.drawio]
+![PuzzleER図.drawio]
 
 
 
