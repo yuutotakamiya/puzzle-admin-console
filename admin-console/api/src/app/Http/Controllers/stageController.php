@@ -12,6 +12,7 @@ use App\Models\StageLog;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Exception;
+use function Laravel\Prompts\error;
 
 class stageController extends Controller
 {
@@ -32,6 +33,9 @@ class stageController extends Controller
             ->min('min_hand_num');
 
         $Stage_hand__min_num = ['min_hand_num' => $min_hand];
-        return response()->json($Stage_hand__min_num);
+        if(empty($min_hand)){
+            return response()->json(['error'=>'nullです'],404);
+        }
+        return response()->json(['min_hand_num' => $min_hand]);
     }
 }

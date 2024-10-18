@@ -84,7 +84,7 @@ Accept: application/json
 Authorization: Bearer 1|LjFNf4rRpykUFCpyrjUF6dMDQfA3oK3dyS0DhHAa825b40b7 ###トークン認証をするときは必須
 
 ###自分自身の最短手数取得
-GET http://localhost:8000/api/min_hand_stage/1/1
+GET http://localhost:8000/api/min_hand_stage/1/110
 Accept: application/json
 Authorization: Bearer 1|LjFNf4rRpykUFCpyrjUF6dMDQfA3oK3dyS0DhHAa825b40b7  ###トークン認証をするときは必須
 
