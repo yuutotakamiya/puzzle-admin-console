@@ -12,4 +12,6 @@ class Land extends Model
     protected $guarded = [
         'id',
     ];
+
+
 }

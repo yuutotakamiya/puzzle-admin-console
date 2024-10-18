@@ -22,11 +22,13 @@ class LandController extends Controller
     //島の詳細情報一覧
     public function show(Request $request)
     {
-        $land_block_num = Landstatus::select("land_block_num");//島で埋めたブロックの数
-        $land_block_sum = Land::select('block_mission_sum');//島で埋める合計のブロックの数
+        $land_block_num = Landstatus::where('land_id','=',$request->land_id)->sum('land_block_num');
 
+        $get_land= Land::where('id','=',$request->land_id)->first();
 
-        return response()->json();
+        $get_land['land_block_num'] = $land_block_num;
+
+        return response()->json($get_land);
     }
 
     //島の状況登録
@@ -46,7 +48,7 @@ class LandController extends Controller
 
            //すでに同じ島が存在していなかったら
            if(empty($getlandstatus)){
-               $land_status = Landstatus::create([
+               Landstatus::create([
                    'land_id'=>$request->land_id,
                    'user_id'=>$request->user_id,
                    'land_block_num' =>$request->land_block_num
@@ -55,6 +57,17 @@ class LandController extends Controller
                $getlandstatus->land_block_num +=  $request->land_block_num;
 
                $getlandstatus->save();
+           }
+            $land_block_num = Landstatus::where('land_id','=',$request->land_id)->sum('land_block_num');
+
+           $land= Land::where('id','=',$request->land_id)->first();
+
+           //目標のブロックの数より埋めた数が多かった場合リザルトを1にする
+           if($land_block_num>=$land->block_mission_sum){
+
+               $land->result = 1;
+
+               $land->save();
            }
             return response()->json();
         }catch (Exception $e){

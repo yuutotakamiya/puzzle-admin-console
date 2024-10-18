@@ -62,8 +62,9 @@
                 <a href="{{route('follow_logslogs')}}" class="nav-link px-2 text-white">フォローログ一覧</a><br>
                 <a href="{{route('stagesstage.index')}}" class="nav-link px-2 text-white">ステージマスタ一覧</a>
                 <a href="{{route('stagesstages.log')}}" class="nav-link px-2 text-white">ステージログ一覧</a>
-                <a href="{{route('landsland')}}" class="nav-link px-2 text-white">島のマスタ一覧</a>
-                <a href="{{route('blocksblocks')}}" class="nav-link px-2 text-white">ブロック一覧</a>
+                <a href="{{route('landsland')}}" class="nav-link px-2 text-white">島の一覧</a>
+                <a href="{{route('landsshow_land_status')}}" class="nav-link px-2 text-white">島の状況一覧</a>
+
             </div>
 
         </div>

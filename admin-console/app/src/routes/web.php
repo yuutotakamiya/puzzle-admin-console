@@ -58,7 +58,6 @@ Route::middleware(NoCacheMiddleware::class)->group(function () {
         Route::get('user_mailList', 'user_mailList')->name('user_mail_list');//メール受信一覧を表示
         Route::get('mail_send', 'show_send')->name('mail_send');//メール送信の表示
         Route::post('mail_send', 'send')->name('mail_send');//メール送信処理
-
     });
 
     //フォローのルートをグループ化
@@ -84,6 +83,8 @@ Route::middleware(NoCacheMiddleware::class)->group(function () {
     Route::prefix('lands')->name('lands')->controller(LandController::class)->group(function () {
         //島の情報を表示
         Route::get('land', 'index')->name('land');
+        Route::get('landstatus', 'show_land_status')->name('show_land_status');
+
     });
 
     //ブロックのルートをグループ化

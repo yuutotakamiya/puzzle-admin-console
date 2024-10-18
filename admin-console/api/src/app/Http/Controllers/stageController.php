@@ -28,9 +28,10 @@ class stageController extends Controller
     public function show(Request $request)
     {
         $min_hand = StageLog::where('user_id','=',$request['user_id'])
+            ->where('stage_id','=',$request['stage_id'])
             ->min('min_hand_num');
 
-        $Stage_hand__min_num = ['min_hand_num' => $min_hand,'user_id'=>$min_hand,'stage_id'=>$min_hand];
+        $Stage_hand__min_num = ['min_hand_num' => $min_hand];
         return response()->json($Stage_hand__min_num);
     }
 }

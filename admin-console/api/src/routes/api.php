@@ -51,13 +51,13 @@ Route::middleware(NoCacheMiddleware::class)->group(function (){
     Route::get('stage/{stage_id}',[stageController::class,'index'])->middleware('auth:sanctum')->name('stage.index');
 
     //自分自身の最短手数
-    Route::get('min_hand_stage/{user_id}',[stageController::class,'show'])->middleware('auth:sanctum')->name('stage.index');
+    Route::get('min_hand_stage/{stage_id}/{user_id}',[stageController::class,'show'])->middleware('auth:sanctum')->name('stage.index');
 
     //島の情報一覧
     Route::get('land/index',[LandController::class,'index'])->middleware('auth:sanctum')->name('land.index');
 
     //島の詳細情報一覧
-    Route::get('land/show',[LandController::class,'show'])->middleware('auth:sanctum')->name('land.show');
+    Route::get('land/show/{land_id}',[LandController::class,'show'])->middleware('auth:sanctum')->name('land.show');
 
     //島の状況の登録
     Route::post('land_block/store',[LandController::class,'store'])->middleware('auth:sanctum')->name('land.store');
