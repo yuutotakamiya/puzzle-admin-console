@@ -16,7 +16,10 @@ class LandController extends Controller
     {
         $land = Land::all();
 
-        return response()->json([LandResource::collection($land)]);
+        for($i =0; $i<count($land); $i++) {
+              $land[$i]['land_block_num'] =Landstatus::where('land_id','=',$land[$i]->id)->sum('land_block_num');
+        }
+        return response()->json($land);
     }
 
     //島の詳細情報一覧

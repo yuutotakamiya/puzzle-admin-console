@@ -6,11 +6,13 @@ use App\Http\Resources\User_ItemResource;
 use App\Http\Resources\UserResource;
 use App\Models\User;
 use Exception;
+use http\Env\Response;
 use Illuminate\Auth\Events\Validated;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
+use Laravel\Sanctum\PersonalAccessToken;
 
 class UserController extends Controller
 {
@@ -111,6 +113,23 @@ class UserController extends Controller
             return response()->json();
         }catch (Exception $e){
             return response()->json($e, 500);
+        }
+    }
+
+    //既存ユーザーのトークンの生成
+    public function createToken(Request $request)
+    {
+        //トークンが保存されているか確認
+        $token = PersonalAccessToken::where('tokenable_id','=',$request->user_id)->first();
+        //トークンがnullの場合
+        if($token==null){
+            $user = User::findOrFail($request->user_id);
+            //APIトークンを生成
+            $token =$user->createToken($user->name)->plainTextToken;
+            //APIトークンとユーザーIDをjsonで返す
+            return response()->json(['user_id' => $user->id,'token'=>$token]);
+        }else{
+            return Response()->json();
         }
     }
 }

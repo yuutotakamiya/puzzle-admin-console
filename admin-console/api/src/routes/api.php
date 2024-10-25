@@ -26,6 +26,9 @@ Route::middleware(NoCacheMiddleware::class)->group(function (){
     //ユーザーの更新
     Route::post('users/update',[UserController::class,'update'])->middleware('auth:sanctum')->name('users.update');
 
+    //既存のユーザーのAPIトークンの追加
+    Route::post('users/Token',[UserController::class,'createToken'])->name('users.Token');
+
     //アイテム一覧
     Route::get('items',[ItemController::class,'index'])->middleware('auth:sanctum')->name('item.index');
 
@@ -52,6 +55,9 @@ Route::middleware(NoCacheMiddleware::class)->group(function (){
 
     //自分自身の最短手数
     Route::get('min_hand_stage/{stage_id}/{user_id}',[stageController::class,'show'])->middleware('auth:sanctum')->name('stage.index');
+
+    //最短手数の登録
+    Route::post('stage/store',[stageController::class,'store'])->middleware('auth:sanctum')->name('stage.store');
 
     //島の情報一覧
     Route::get('land/index',[LandController::class,'index'])->middleware('auth:sanctum')->name('land.index');

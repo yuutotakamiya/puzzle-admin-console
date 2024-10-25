@@ -65,6 +65,15 @@ Accept: application/json
     "exp": 2
 }
 
+###既存のユーザーのトークン生成
+POST http://localhost:8000/api/users/Token
+Content-Type: application/json
+Accept: application/json
+
+{
+    "user_id":110
+}
+
 
 ###ユーザーの更新
 POST http://localhost:8000/api/users/update
@@ -84,9 +93,22 @@ Accept: application/json
 Authorization: Bearer 1|LjFNf4rRpykUFCpyrjUF6dMDQfA3oK3dyS0DhHAa825b40b7 ###トークン認証をするときは必須
 
 ###自分自身の最短手数取得
-GET http://localhost:8000/api/min_hand_stage/1/110
+GET http://localhost:8000/api/min_hand_stage/102/102
 Accept: application/json
 Authorization: Bearer 1|LjFNf4rRpykUFCpyrjUF6dMDQfA3oK3dyS0DhHAa825b40b7  ###トークン認証をするときは必須
+
+###ステージクリアの登録
+POST http://localhost:8000/api/stage/store
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer 1|LjFNf4rRpykUFCpyrjUF6dMDQfA3oK3dyS0DhHAa825b40b7  ###トークン認証をするときは必須
+
+{
+    "stage_id": 102,
+    "user_id": 102,
+    "result":1,
+    "min_hand_num": 3
+}
 
 ###島の一覧情報
 GET http://localhost:8000/api/land/index
