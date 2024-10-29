@@ -111,12 +111,12 @@ Authorization: Bearer 1|LjFNf4rRpykUFCpyrjUF6dMDQfA3oK3dyS0DhHAa825b40b7  ###ト
 }
 
 ###島の一覧情報
-GET https://api-cube-puzzle.japaneast.cloudapp.azure.com/api/land/index
+GET http://localhost:8000/api/land/index
 Accept: application/json
-Authorization: Bearer 1|INxGbCeS6MYHiXSn5TtpIe0uwJKF6d2aAr3wIzuV2fec07cf ###トークン認証をするときは必須
+Authorization: Bearer 11|8HMwK9DzbL7Cake3ExINS1bV0xMzwl4fdL43rVbC0ab0f151 ###トークン認証をするときは必須
 
 ###島の詳細情報
-GET http://localhost:8000/api/land/show/2
+GET http://localhost:8000/api/land/show/11
 Accept: application/json
 Authorization: Bearer 1|LjFNf4rRpykUFCpyrjUF6dMDQfA3oK3dyS0DhHAa825b40b7 ###トークン認証をするときは必須
 

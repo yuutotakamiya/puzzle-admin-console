@@ -9,12 +9,16 @@ use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
+define('landstage',1);
+define('maxlandstage',3);
 class LandController extends Controller
 {
+
+
     //島の一覧
     public function index(Request $request)
     {
-        $land = Land::all();
+        $land = Land::orderBy('result')->orderByDesc('created_at')->limit(10)->get();
 
         for($i =0; $i<count($land); $i++) {
               $land[$i]['land_block_num'] =Landstatus::where('land_id','=',$land[$i]->id)->sum('land_block_num');
@@ -71,6 +75,12 @@ class LandController extends Controller
                $land->result = 1;
 
                $land->save();
+
+               Land::create([
+                   'stage_id'=>rand(landstage,maxlandstage),
+                   'block_mission_sum'=>100,
+                   'result'=>0
+               ]);
            }
             return response()->json();
         }catch (Exception $e){
