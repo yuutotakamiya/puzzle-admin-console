@@ -9,8 +9,8 @@ use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
-define('landstage',1);
-define('maxlandstage',3);
+define('minlandstage',11);
+define('maxlandstage',13);
 class LandController extends Controller
 {
 
@@ -77,7 +77,7 @@ class LandController extends Controller
                $land->save();
 
                Land::create([
-                   'stage_id'=>rand(landstage,maxlandstage),
+                   'stage_id'=>rand(minlandstage,maxlandstage),
                    'block_mission_sum'=>100,
                    'result'=>0
                ]);
