@@ -113,7 +113,7 @@ Authorization: Bearer 5|Ffw6zuoPtEdjlS3XpykIMBE34KUqIU75YM1oZPFG3e0822b8  ###ト
 ###島の一覧情報
 GET https://api-cube-puzzle.japaneast.cloudapp.azure.com/api/land/index
 Accept: application/json
-Authorization: Bearer 5|Ffw6zuoPtEdjlS3XpykIMBE34KUqIU75YM1oZPFG3e0822b8 ###トークン認証をするときは必須
+Authorization: Bearer 9|luMELsD4uMFiCnK486PQ4A3MlGsjQWyxgOeq68iV115ecd62 ###トークン認証をするときは必須
 
 ###島の詳細情報
 GET https://api-cube-puzzle.japaneast.cloudapp.azure.com/api/land/show/11
