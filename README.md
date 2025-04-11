@@ -4,4 +4,7 @@
 
 #ディレクトリ構成
 
+admin-console/api/srcがAPIのソースになっております
+
+admin-console/app/srcが管理ツールのソースになっております
 
